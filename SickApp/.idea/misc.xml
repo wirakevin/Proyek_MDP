@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/drawable-v24/baseline_add_20.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/drawable-v24/baseline_add_24.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/drawable-v24/baseline_history_20.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/drawable-v24/baseline_history_24.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/activity_add_obat_kimia.xml" value="0.18840579710144928" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/activity_add_obatkimia.xml" value="0.33" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/activity_admin_page.xml" value="0.18840579710144928" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/activity_change_obat.xml" value="0.25" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/activity_guest_page.xml" value="0.16818642350557245" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/activity_main.xml" value="0.1947463768115942" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/activity_main2.xml" value="0.1947463768115942" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/activity_main3.xml" value="0.1947463768115942" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/activity_main4.xml" value="0.1947463768115942" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/activity_main5.xml" value="0.33" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/activity_main6.xml" value="0.16818642350557245" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/activity_user_page.xml" value="0.16818642350557245" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/content_add_obat_kimia.xml" value="0.18840579710144928" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/content_main.xml" value="0.16818642350557245" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/fragment_admin_add.xml" value="0.18840579710144928" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/fragment_admin_history.xml" value="0.18840579710144928" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/fragment_first.xml" value="0.33" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/fragment_login.xml" value="0.1947463768115942" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/fragment_register.xml" value="0.1947463768115942" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/fragment_user_history.xml" value="0.16818642350557245" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/fragment_user_home.xml" value="0.16818642350557245" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/layout/item_obat.xml" value="0.33" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/menu/adminmenu.xml" value="0.3458333333333333" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/menu/menu.xml" value="0.3458333333333333" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/menu/menu_admin.xml" value="0.3458333333333333" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/menu/optionlogin.xml" value="0.3458333333333333" />
+        <entry key="..\:/Users/SCP-999/Storage/Desktop/Praktikum/MDP/SickApp/app/src/main/res/menu/usermenu.xml" value="0.3405128205128205" />
+        <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/activity_firstaid.xml" value="0.16818642350557245" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
