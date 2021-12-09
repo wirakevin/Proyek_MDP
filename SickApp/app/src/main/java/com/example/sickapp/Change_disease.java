@@ -1,7 +1,6 @@
 package com.example.sickapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,50 +11,61 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FirstAid extends AppCompatActivity {
+public class Change_disease extends AppCompatActivity {
 
     ArrayList<String> gejalapenyakit = new ArrayList<>();
     ArrayList<Disease> diseases = new ArrayList<>();
     ArrayList<Gejala> gejalas = new ArrayList<>();
     ArrayList<String> listmygejala = new ArrayList<>();
-    User user;
     TextView tvgejalapenyakit;
-    EditText inumur, ingejalapenyakit;
-    Button btnsubmitdiagnosa, btnsearch;
+    EditText innamapenyakit, ingejalapenyakit;
+    Button btnupdate, btndelete, btnsearch;
     RecyclerView rvgejala;
     GejalaAdapter adapter;
     String search = "", mygejala = "";
+    Disease disease;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_firstaid);
+        setContentView(R.layout.activity_change_disease);
         AppDatabase.initDatabase(getApplicationContext(), "DB");
         new GetAllDisease().execute();
         new GetAllGejala().execute();
 
-        user = getIntent().getParcelableExtra("user");
+        disease = getIntent().getParcelableExtra("disease");
 
-        inumur = findViewById(R.id.inumur);
-        tvgejalapenyakit = findViewById(R.id.tvgejalapenyakit2);
+        innamapenyakit = findViewById(R.id.innamapenyakit);
+        tvgejalapenyakit = findViewById(R.id.tvgejalapenyakit);
         ingejalapenyakit = findViewById(R.id.ingejalapenyakit);
         btnsearch = findViewById(R.id.btnsearch);
         rvgejala = findViewById(R.id.rvgejala);
-        btnsubmitdiagnosa = findViewById(R.id.btnsubmitdianosa);
+        btnupdate = findViewById(R.id.btnupdate);
+        btndelete = findViewById(R.id.btndelete);
 
-        tvgejalapenyakit.setText("Gejala : " + mygejala);
+        listmygejala.clear();
+        String[] g = disease.gejala.split(",");
+        for (String s:g) {
+            listmygejala.add(s);
+        }
+        gejalapenyakit = listmygejala;
+        mygejala = "";
+        for (String s:listmygejala) {
+            mygejala += s+",";
+        }
 
-        rvgejala.setLayoutManager(new LinearLayoutManager(FirstAid.this));
+        rvgejala.setLayoutManager(new LinearLayoutManager(Change_disease.this));
         adapter = new GejalaAdapter(gejalas, gejalapenyakit);
         rvgejala.setAdapter(adapter);
+
+        tvgejalapenyakit.setText("Gejala : " + mygejala);
+        innamapenyakit.setText(disease.nama);
 
         btnsearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,89 +103,88 @@ public class FirstAid extends AppCompatActivity {
             }
         });
 
-        btnsubmitdiagnosa.setOnClickListener(new View.OnClickListener() {
+        btnupdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mygejala.equals("") || inumur.getText().toString().equals("")){
-                    Toast.makeText(FirstAid.this, "Field kosong", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    ArrayList<String> db = new ArrayList<>();
-                    db.clear();
-                    String[] tempdb = mygejala.split(",");
-                    for (String s:tempdb) {
-                        db.add(s);
-                    }
-
-                    ArrayList<Disease> nextkb = new ArrayList<>();
-                    ArrayList<Disease> kb = new ArrayList<>();
-                    Disease mydisease = new Disease("", "");
-                    int notfound = 0;
-
-                    nextkb.clear();
-                    new GetAllDisease();
-                    nextkb.addAll(diseases);
-
-                    while (nextkb.size() > 1){
-                        //Refresh Knowledge Base yang belum dieksekusi
-                        kb.clear();
-                        kb.addAll(nextkb);
-                        nextkb.clear();
-                        notfound++;
-
-                        for (Disease nowkb:kb) {
-                            //Mengambil gejala penyakit atau knowledge sekarang
-                            ArrayList<String> nowkbgejala = new ArrayList<>();
-                            nowkbgejala.clear();
-                            String[] tempgejala = nowkb.gejala.split(",");
-                            for (String s:tempgejala) {
-                                nowkbgejala.add(s);
-                            }
-
-                            if (nowkbgejala.size() <= db.size()){
-                                int nada = 0;
-                                for (String g1: nowkbgejala) {
-                                    for (String g2:db) {
-                                        if (g1.trim().toUpperCase().equals(g2.trim().toUpperCase())){
-                                            nada++;
-                                        }
-                                    }
-                                }
-
-                                if (nada >= nowkbgejala.size()){
-                                    boolean adadidb = false;
-                                    for (String my:db) {
-                                        if (my.trim().toUpperCase().equals(nowkb.nama.trim().toUpperCase())){
-                                            adadidb = true;
-                                        }
-                                    }
-                                    if (!adadidb){
-                                        db.add(nowkb.nama);
-                                        mydisease = nowkb;
-                                        notfound = 0;
-                                    }
-                                }
-                                else{
-                                    nextkb.add(nowkb);
-                                }
-                            }
-                            else{
-                                nextkb.add(nowkb);
-                            }
-                        }
-                        if (notfound > 3){
-                            nextkb.clear();
-                        }
-                    }
-
-                    Intent i = new Intent(FirstAid.this,FirstAid_end.class);
-                    i.putExtra("user", user);
-                    i.putExtra("umur", inumur.getText().toString());
-                    i.putExtra("mydisease", mydisease);
-                    startActivity(i);
-                }
+                cekinput("update");
             }
         });
+
+        btndelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cekinput("delete");
+            }
+        });
+    }
+
+    public void cekinput(String task){
+        if (task.equals("update")){
+            if (innamapenyakit.equals("") || mygejala.equals("")){
+                Toast.makeText(Change_disease.this, "Field kosong", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                disease.nama = innamapenyakit.getText().toString();
+                disease.gejala = mygejala;
+
+                new UpdateTask().execute(disease);
+                Toast.makeText(Change_disease.this, "Disease Updated", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(Change_disease.this,Admin_page.class);
+                startActivity(i);
+            }
+        }
+        else{
+            new DeleteTask().execute(disease);
+            Toast.makeText(Change_disease.this, "Disease Deleted", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(Change_disease.this,Admin_page.class);
+            startActivity(i);
+        }
+    }
+
+    private class UpdateTask extends AsyncTask<Disease, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Disease... listdisease) {
+            AppDatabase.database.diseaseDAO().update(listdisease[0]);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            new GetAllTask().execute();
+        }
+    }
+
+    private class DeleteTask extends AsyncTask<Disease, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Disease... listdisease) {
+            AppDatabase.database.diseaseDAO().delete(listdisease[0]);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            new GetAllTask().execute();
+        }
+    }
+
+    private class GetAllTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            diseases.clear();
+            diseases.addAll(AppDatabase.database.diseaseDAO().getAllDisease());
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+        }
     }
 
     private class GetAllDisease extends AsyncTask<Void, Void, List<Disease>> {

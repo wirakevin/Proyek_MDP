@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/menuAdd_admin"
-        android:icon="@drawable/baseline_add_24"
-        android:title="Add" />
+        android:id="@+id/menuDisease_admin"
+        android:icon="@drawable/baseline_coronavirus_24"
+        android:title="Disease" />
     <item
-        android:id="@+id/menuHistory_admin"
-        android:icon="@drawable/baseline_history_24"
-        android:title="History" />
+        android:id="@+id/menuObat_admin"
+        android:icon="@drawable/baseline_medication_24"
+        android:title="Medicine" />
 </menu>

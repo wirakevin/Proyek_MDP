@@ -7,8 +7,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.util.ArrayList;
-
 @Entity(tableName = "table_obat")
 public class Obat implements Parcelable {
     @PrimaryKey(autoGenerate = true)
@@ -18,36 +16,33 @@ public class Obat implements Parcelable {
     @ColumnInfo(name="nama")
     String nama;
 
-    @ColumnInfo(name="rasa")
-    String rasa;
-
     @ColumnInfo(name="untuk_umur")
     String untuk_umur;
+
+    @ColumnInfo(name="rasa")
+    String rasa;
 
     @ColumnInfo(name="takaran")
     String takaran;
 
-    @ColumnInfo(name="harga")
-    String harga;
+    @ColumnInfo(name="untuk_penyakit")
+    String untuk_penyakit;
 
-    @ColumnInfo(name="gejala")
-    String gejala;
-
-    public Obat(String nama, String untuk_umur, String takaran, String gejala) {
+    public Obat(String nama, String untuk_umur, String rasa, String takaran, String untuk_penyakit) {
         this.nama = nama;
         this.untuk_umur = untuk_umur;
+        this.rasa = rasa;
         this.takaran = takaran;
-        this.gejala = gejala;
+        this.untuk_penyakit = untuk_penyakit;
     }
 
     protected Obat(Parcel in) {
         id = in.readInt();
         nama = in.readString();
-        rasa = in.readString();
         untuk_umur = in.readString();
+        rasa = in.readString();
         takaran = in.readString();
-        harga = in.readString();
-        gejala = in.readString();
+        untuk_penyakit = in.readString();
     }
 
     public static final Creator<Obat> CREATOR = new Creator<Obat>() {
@@ -71,10 +66,14 @@ public class Obat implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(id);
         parcel.writeString(nama);
-        parcel.writeString(rasa);
         parcel.writeString(untuk_umur);
+        parcel.writeString(rasa);
         parcel.writeString(takaran);
-        parcel.writeString(harga);
-        parcel.writeString(gejala);
+        parcel.writeString(untuk_penyakit);
+    }
+
+    @Override
+    public String toString() {
+        return nama;
     }
 }

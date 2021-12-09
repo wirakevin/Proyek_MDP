@@ -17,29 +17,26 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Change_obat extends AppCompatActivity {
+public class Add_obat extends AppCompatActivity {
 
     ArrayList<Obat> obats = new ArrayList<>();
     ArrayList<Disease> diseases = new ArrayList<>();
     ArrayList<String> listspn = new ArrayList<>();
-    Obat obat;
     RadioButton rbumur, rbumur1, rbumur2, rbumur3;
     TextView tvantara;
     EditText innamaobat, inrasaobat, inobatuntukumur, inobatuntukumur2, intakaranobat;
     Spinner spnobatpenyakit;
-    Button btnupdateobat, btndeleteobat;
+    Button btnaddnewobat;
     ArrayAdapter<String> spnadapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change_obat);
+        setContentView(R.layout.activity_add_obat);
         AppDatabase.initDatabase(getApplicationContext(), "DB");
 
         new GetAllDisease().execute();
         new GetAllObat().execute();
-
-        obat = getIntent().getParcelableExtra("obat");
 
         innamaobat = findViewById(R.id.innamaobat);
         inrasaobat = findViewById(R.id.inrasaobat);
@@ -52,42 +49,16 @@ public class Change_obat extends AppCompatActivity {
         inobatuntukumur2 = findViewById(R.id.inobatuntukumur2);
         intakaranobat = findViewById(R.id.intakaranobat);
         spnobatpenyakit = findViewById(R.id.spnobatpenyakit);
-        btnupdateobat = findViewById(R.id.btnupdateobat);
-        btndeleteobat = findViewById(R.id.btndeleteobat);
+        btnaddnewobat = findViewById(R.id.btnaddnewobat);
 
         tvantara.setVisibility(View.INVISIBLE);
         inobatuntukumur2.setVisibility(View.INVISIBLE);
 
         spnadapter =
-                new ArrayAdapter<String>(Change_obat.this,  android.R.layout.simple_spinner_dropdown_item, listspn);
+                new ArrayAdapter<String>(Add_obat.this,  android.R.layout.simple_spinner_dropdown_item, listspn);
         spnadapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
 
         spnobatpenyakit.setAdapter(spnadapter);
-
-        String[] umur = obat.untuk_umur.split(",");
-
-        innamaobat.setText(obat.nama);
-        inrasaobat.setText(obat.rasa);
-        if (umur[0].equals("<")){
-            inobatuntukumur.setText(umur[1]);
-            rbumur1.setChecked(true);
-        }
-        else if (umur[0].equals(">")){
-            inobatuntukumur.setText(umur[1]);
-            rbumur2.setChecked(true);
-        }
-        else if (umur[0].equals("-")){
-            inobatuntukumur.setText(umur[1]);
-            inobatuntukumur2.setText(umur[2]);
-            rbumur3.setChecked(true);
-            tvantara.setVisibility(View.VISIBLE);
-            inobatuntukumur2.setVisibility(View.VISIBLE);
-        }
-        else{
-            inobatuntukumur.setText(umur[0]);
-            rbumur.setChecked(true);
-        }
-        intakaranobat.setText(obat.takaran);
 
         rbumur.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,83 +89,44 @@ public class Change_obat extends AppCompatActivity {
             }
         });
 
-        btnupdateobat.setOnClickListener(new View.OnClickListener() {
+        btnaddnewobat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cekinput("update");
-            }
-        });
+                String nama = innamaobat.getText().toString();
+                String rasa = inrasaobat.getText().toString();
+                String umur = inobatuntukumur.getText().toString();
+                String takaran = intakaranobat.getText().toString();
+                String penyakit = spnobatpenyakit.getSelectedItem().toString();
 
-        btndeleteobat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cekinput("delete");
+                if (nama.equals("") || umur.equals("") || takaran.equals("") || penyakit.equals("...")){
+                    Toast.makeText(Add_obat.this, "Field kosong", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    if (rbumur1.isChecked()){
+                        umur = ">," + inobatuntukumur.getText().toString();
+                    }
+                    else if (rbumur2.isChecked()){
+                        umur = "<," + inobatuntukumur.getText().toString();
+                    }
+                    else if (rbumur3.isChecked()){
+                        umur = "-," + inobatuntukumur.getText().toString() + "," + inobatuntukumur2.getText().toString();
+                    }
+
+                    Obat obat = new Obat(nama, umur, rasa, takaran, penyakit);
+                    new InsertTask().execute(obat);
+                    Toast.makeText(Add_obat.this, "Obat added", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(Add_obat.this, Admin_page.class);
+                    startActivity(i);
+                }
             }
         });
     }
 
-    public void cekinput(String task){
-        if (task.equals("update")){
-            String nama = innamaobat.getText().toString();
-            String rasa = inrasaobat.getText().toString();
-            String umur = inobatuntukumur.getText().toString();
-            String takaran = intakaranobat.getText().toString();
-            String penyakit = spnobatpenyakit.getSelectedItem().toString();
-
-            if (nama.equals("") || umur.equals("") || takaran.equals("") || penyakit.equals("...")){
-                Toast.makeText(Change_obat.this, "Field kosong", Toast.LENGTH_SHORT).show();
-            }
-            else{
-                if (rbumur1.isChecked()){
-                    umur = ">," + inobatuntukumur.getText().toString();
-                }
-                else if (rbumur2.isChecked()){
-                    umur = "<," + inobatuntukumur.getText().toString();
-                }
-                else if (rbumur3.isChecked()){
-                    umur = "-," + inobatuntukumur.getText().toString() + "," + inobatuntukumur2.getText().toString();
-                }
-
-                obat.nama = nama;
-                obat.rasa = rasa;
-                obat.untuk_umur = umur;
-                obat.takaran = takaran;
-                obat.untuk_penyakit = penyakit;
-
-                new UpdateTask().execute(obat);
-                Toast.makeText(Change_obat.this, "Obat Updated", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(Change_obat.this,Admin_page.class);
-                startActivity(i);
-            }
-        }
-        else{
-            new DeleteTask().execute(obat);
-            Toast.makeText(Change_obat.this, "Obat Deleted", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(Change_obat.this,Admin_page.class);
-            startActivity(i);
-        }
-    }
-
-    private class UpdateTask extends AsyncTask<Obat, Void, Void> {
+    private class InsertTask extends AsyncTask<Obat, Void, Void> {
 
         @Override
         protected Void doInBackground(Obat... listobat) {
-            AppDatabase.database.obatDAO().update(listobat[0]);
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            new GetAllTask().execute();
-        }
-    }
-
-    private class DeleteTask extends AsyncTask<Obat, Void, Void> {
-
-        @Override
-        protected Void doInBackground(Obat... listobat) {
-            AppDatabase.database.obatDAO().delete(listobat[0]);
+            AppDatabase.database.obatDAO().insert(listobat[0]);
             return null;
         }
 
@@ -217,11 +149,10 @@ public class Change_obat extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-
         }
     }
 
-    private class GetAllObat extends AsyncTask<Void, Void, List<Obat>> {
+    private class GetAllObat extends AsyncTask<Void, Void, List<Obat>>{
 
         @Override
         protected List<Obat> doInBackground(Void... voids) {

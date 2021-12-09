@@ -10,10 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SickApp">
         <activity
+            android:name=".FirstAid_end"
+            android:exported="false" />
+        <activity
             android:name=".Change_obat"
             android:exported="false" />
         <activity
-            android:name=".Test"
+            android:name=".Add_gejala"
+            android:exported="false"
+            android:parentActivityName=".Admin_page" />
+        <activity
+            android:name=".Add_obat"
+            android:exported="false" />
+        <activity
+            android:name=".Change_disease"
             android:exported="false" />
         <activity
             android:name=".Guest_page"
@@ -22,7 +32,7 @@
             android:name=".User_page"
             android:exported="false" />
         <activity
-            android:name=".Add_obatkimia"
+            android:name=".Add_Disease"
             android:exported="false" />
         <activity
             android:name=".Admin_page"

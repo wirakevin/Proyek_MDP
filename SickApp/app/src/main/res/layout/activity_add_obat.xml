@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Change_obat">
+    tools:context=".Add_obat">
 
     <EditText
         android:id="@+id/inobatuntukumur2"
@@ -103,6 +103,16 @@
         app:layout_constraintStart_toStartOf="@+id/intakaranobat"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
+    <Button
+        android:id="@+id/btnaddnewobat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="add new obat"
+        app:layout_constraintEnd_toEndOf="@+id/spnobatpenyakit"
+        app:layout_constraintStart_toStartOf="@+id/spnobatpenyakit"
+        app:layout_constraintTop_toBottomOf="@+id/spnobatpenyakit" />
+
     <EditText
         android:id="@+id/inrasaobat"
         android:layout_width="0dp"
@@ -139,26 +149,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/inobatuntukumur" />
-
-    <Button
-        android:id="@+id/btnupdateobat"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="update"
-        app:layout_constraintEnd_toEndOf="@+id/spnobatpenyakit"
-        app:layout_constraintStart_toStartOf="@+id/spnobatpenyakit"
-        app:layout_constraintTop_toBottomOf="@+id/spnobatpenyakit" />
-
-    <Button
-        android:id="@+id/btndeleteobat"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#F44336"
-        android:text="delete"
-        app:layout_constraintEnd_toEndOf="@+id/btnupdateobat"
-        app:layout_constraintStart_toStartOf="@+id/btnupdateobat"
-        app:layout_constraintTop_toBottomOf="@+id/btnupdateobat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

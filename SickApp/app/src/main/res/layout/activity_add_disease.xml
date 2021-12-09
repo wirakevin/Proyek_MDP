@@ -4,65 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FirstAid">
+    tools:context=".Add_Disease">
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/innamapenyakit"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="32dp"
-        android:text="Diagnosa Penyakit"
-        android:textSize="34sp"
+        android:ems="10"
+        android:hint="Nama Penyakit"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/inumur"
+    <TextView
+        android:id="@+id/tvgejalapenyakit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:hint="Umur"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/innamapenyakit"
+        app:layout_constraintStart_toStartOf="@+id/innamapenyakit"
+        app:layout_constraintTop_toBottomOf="@+id/innamapenyakit" />
 
     <EditText
         android:id="@+id/ingejalapenyakit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Gejala"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toStartOf="@+id/btnsearch"
-        app:layout_constraintStart_toStartOf="@+id/inumur"
-        app:layout_constraintTop_toBottomOf="@+id/tvgejalapenyakit2" />
-
-    <TextView
-        android:id="@+id/tvgejalapenyakit2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/inumur"
-        app:layout_constraintStart_toStartOf="@+id/inumur"
-        app:layout_constraintTop_toBottomOf="@+id/inumur" />
+        app:layout_constraintStart_toStartOf="@+id/innamapenyakit"
+        app:layout_constraintTop_toBottomOf="@+id/tvgejalapenyakit" />
 
     <Button
         android:id="@+id/btnsearch"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         app:icon="@drawable/baseline_search_24"
-        app:layout_constraintEnd_toEndOf="@+id/inumur"
+        app:layout_constraintEnd_toEndOf="@+id/innamapenyakit"
         app:layout_constraintTop_toTopOf="@+id/ingejalapenyakit" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -71,22 +58,20 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnsubmitdianosa"
-        app:layout_constraintEnd_toEndOf="@+id/btnsearch"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/ingejalapenyakit"
+        app:layout_constraintBottom_toTopOf="@+id/btnnewdisease"
+        app:layout_constraintEnd_toEndOf="@+id/innamapenyakit"
+        app:layout_constraintStart_toStartOf="@+id/innamapenyakit"
         app:layout_constraintTop_toBottomOf="@+id/ingejalapenyakit"
         tools:listitem="@layout/item_gejala" />
 
     <Button
-        android:id="@+id/btnsubmitdianosa"
+        android:id="@+id/btnnewdisease"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:text="Submit"
+        android:text="add new Disease"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/inumur"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/inumur" />
+        app:layout_constraintEnd_toEndOf="@+id/rvgejala"
+        app:layout_constraintStart_toStartOf="@+id/rvgejala" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

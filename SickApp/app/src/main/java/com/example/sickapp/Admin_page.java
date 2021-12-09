@@ -1,7 +1,9 @@
 package com.example.sickapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,19 +15,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Admin_page extends AppCompatActivity {
+public class Admin_page extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
+    ArrayList<Disease> diseases = new ArrayList<>();
     ArrayList<Obat> obats = new ArrayList<>();
-    EditText insearch;
-    Button btnsearch, btnadd;
-    RecyclerView rv;
-    ObatAdapter adapter;
-    String search = "";
+    BottomNavigationView bnadmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,46 +33,12 @@ public class Admin_page extends AppCompatActivity {
         setContentView(R.layout.activity_admin_page);
         AppDatabase.initDatabase(getApplicationContext(), "DB");
 
-        insearch = findViewById(R.id.insearch);
-        btnsearch = findViewById(R.id.btnsearch);
-        btnadd = findViewById(R.id.btnaddobat);
-        rv = findViewById(R.id.rv);
+        bnadmin = findViewById(R.id.bnadmin);
 
-        rv.setLayoutManager(new LinearLayoutManager(Admin_page.this));
-        adapter = new ObatAdapter(obats);
-        rv.setAdapter(adapter);
-
+        new GetAllDisease().execute();
         new GetAllObat().execute();
 
-        adapter.setOnItemClickCallback(new ObatAdapter.OnItemClickCallback() {
-            @Override
-            public void onItemClicked(Obat obat) {
-                Intent i = new Intent(Admin_page.this,Change_obat.class);
-                i.putExtra("obat", obat);
-                startActivity(i);
-            }
-        });
-
-        btnadd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Admin_page.this,Add_obatkimia.class);
-                startActivity(i);
-            }
-        });
-
-        btnsearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                search = insearch.getText().toString();
-                if (search.equals("")){
-                    new GetAllObat().execute();
-                }
-                else{
-                    new getObatByName().execute();
-                }
-            }
-        });
+        bnadmin.setOnNavigationItemSelectedListener(Admin_page.this);
     }
 
     @Override
@@ -90,21 +56,80 @@ public class Admin_page extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class getObatByName extends AsyncTask<Void, Void, List<Obat>> {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1){
+            Fragment f = new Admin_disease();
+            Bundle b = new Bundle();
+            b.putParcelableArrayList("diseases",diseases);
+            f.setArguments(b);
+            getSupportFragmentManager().beginTransaction().replace(R.id.container,f).commit();
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.menuDisease_admin){
+            Fragment f = new Admin_disease();
+            Bundle b = new Bundle();
+            b.putParcelableArrayList("diseases",diseases);
+            f.setArguments(b);
+            getSupportFragmentManager().beginTransaction().replace(R.id.container,f).commit();
+            return true;
+        }
+        if (item.getItemId() == R.id.menuObat_admin){
+            Fragment f = new Admin_obat();
+            Bundle b = new Bundle();
+            b.putParcelableArrayList("diseases",diseases);
+            b.putParcelableArrayList("obats",obats);
+            f.setArguments(b);
+            getSupportFragmentManager().beginTransaction().replace(R.id.container,f).commit();
+            return true;
+        }
+//        return super.onOptionsItemSelected(item);
+        return false;
+    }
+
+    /*private class getDiseaseByName extends AsyncTask<Void, Void, List<Disease>> {
 
         @Override
-        protected List<Obat> doInBackground(Void... voids) {
-            List<Obat> obats = AppDatabase.database.obatDAO().getObatByName(search);
-            return obats;
+        protected List<Disease> doInBackground(Void... voids) {
+            List<Disease> diseases = AppDatabase.database.diseaseDAO().getDiseaseByName(search);
+            return diseases;
         }
 
         @Override
-        protected void onPostExecute(List<Obat> listobat) {
+        protected void onPostExecute(List<Disease> listobat) {
             super.onPostExecute(listobat);
             // Mau ngapain dari hasil doInBackground
-            obats.clear();
-            obats.addAll(listobat);
+            diseases.clear();
+            diseases.addAll(listobat);
             adapter.notifyDataSetChanged();
+        }
+    }*/
+
+    private class GetAllDisease extends AsyncTask<Void, Void, List<Disease>> {
+
+        @Override
+        protected List<Disease> doInBackground(Void... voids) {
+            List<Disease> diseases = AppDatabase.database.diseaseDAO().getAllDisease();
+            return diseases;
+        }
+
+        @Override
+        protected void onPostExecute(List<Disease> listdisease) {
+            super.onPostExecute(listdisease);
+            // Mau ngapain dari hasil doInBackground
+            diseases.clear();
+            diseases.addAll(listdisease);
+
+            bnadmin.setSelectedItemId(R.id.menuDisease_admin);
+            Fragment f = new Admin_disease();
+            Bundle b = new Bundle();
+            b.putParcelableArrayList("diseases",diseases);
+            f.setArguments(b);
+            getSupportFragmentManager().beginTransaction().replace(R.id.container,f).commit();
         }
     }
 
@@ -122,7 +147,6 @@ public class Admin_page extends AppCompatActivity {
             // Mau ngapain dari hasil doInBackground
             obats.clear();
             obats.addAll(listobat);
-            adapter.notifyDataSetChanged();
         }
     }
 }

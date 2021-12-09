@@ -3,7 +3,6 @@ package com.example.sickapp;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,10 +35,26 @@ public class ObatAdapter extends RecyclerView.Adapter<ObatAdapter.ListViewHolder
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         Obat obat = obats.get(position);
 
-        holder.tvnama.setText(obat.nama);
-        holder.tvgejala.setText(obat.gejala);
+        String u = "";
+        String[] umur = obat.untuk_umur.split(",");
+        if (umur[0].equals("<")){
+            u = "Dibawah " + umur[1];
+        }
+        else if (umur[0].equals(">")){
+            u = "Diatas " + umur[1];
+        }
+        else if (umur[0].equals("-")){
+            u = "Antara " + umur[1] + " dan " + umur[2];
+        }
+        else{
+            u = umur[0];
+        }
 
-        holder.card.setOnClickListener(new View.OnClickListener() {
+        holder.tvnamaobat.setText(obat.nama);
+        holder.tvumurobat.setText("Untuk umur : " + u);
+        holder.tvpenyakit.setText("Untuk mengatasi : " + obat.untuk_penyakit);
+
+        holder.cardobat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onItemClickCallback.onItemClicked(obat);
@@ -53,15 +68,14 @@ public class ObatAdapter extends RecyclerView.Adapter<ObatAdapter.ListViewHolder
     }
 
     public class ListViewHolder extends RecyclerView.ViewHolder {
-        TextView tvnama, tvgejala;
-        ImageView ivimage;
-        CardView card;
+        TextView tvnamaobat, tvumurobat, tvpenyakit;
+        CardView cardobat;
         public ListViewHolder(@NonNull final View itemView) {
             super(itemView);
-            card = itemView.findViewById(R.id.card);
-            tvnama = itemView.findViewById(R.id.tvnama);
-            tvgejala = itemView.findViewById(R.id.tvgejala);
-            ivimage = itemView.findViewById(R.id.ivimage);
+            cardobat = itemView.findViewById(R.id.cardobat);
+            tvnamaobat = itemView.findViewById(R.id.tvnamaobat);
+            tvumurobat = itemView.findViewById(R.id.tvumurobat);
+            tvpenyakit = itemView.findViewById(R.id.tvpenyakit);
         }
     }
 
