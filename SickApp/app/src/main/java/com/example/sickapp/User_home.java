@@ -89,6 +89,15 @@ public class User_home extends Fragment {
                 startActivity(i);
             }
         });
+
+        btninformation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), Information_page.class);
+                i.putExtra("user", user);
+                startActivity(i);
+            }
+        });
     }
 
 }

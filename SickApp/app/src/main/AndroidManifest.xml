@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SickApp">
         <activity
+            android:name=".Obat_detail"
+            android:exported="false" />
+        <activity
+            android:name=".Disease_detail"
+            android:exported="false" />
+        <activity
+            android:name=".Information_page"
+            android:exported="false" />
+        <activity
             android:name=".FirstAid_end"
             android:exported="false" />
         <activity

@@ -16,6 +16,7 @@ import java.util.List;
 
 public class FirstAid_end extends AppCompatActivity {
 
+    ArrayList<User> users = new ArrayList<>();
     ArrayList<Obat> obats = new ArrayList<>();
     Disease mydisease;
     User user;
@@ -44,6 +45,9 @@ public class FirstAid_end extends AppCompatActivity {
         }
         else{
             tvhasil.setText("Berdasarkan gejala yang dipilih, anda kemungkinan terkena " + mydisease.nama);
+
+            user.history_penyakit += ","+mydisease.nama;
+            new UpdateTask().execute(user);
         }
 
         rvobat.setLayoutManager(new LinearLayoutManager(FirstAid_end.this));
@@ -53,7 +57,10 @@ public class FirstAid_end extends AppCompatActivity {
         adapter.setOnItemClickCallback(new ObatAdapter.OnItemClickCallback() {
             @Override
             public void onItemClicked(Obat obat) {
-
+                Intent i = new Intent(FirstAid_end.this, Obat_detail.class);
+                i.putExtra("obat", obat);
+                i.putExtra("user", user);
+                startActivity(i);
             }
         });
 
@@ -120,6 +127,36 @@ public class FirstAid_end extends AppCompatActivity {
                 }
             }
             adapter.notifyDataSetChanged();
+        }
+    }
+
+    private class UpdateTask extends AsyncTask<User, Void, Void> {
+
+        @Override
+        protected Void doInBackground(User... listuser) {
+            AppDatabase.database.userDAO().update(listuser[0]);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            new GetAllTask().execute();
+        }
+    }
+
+    private class GetAllTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            users.clear();
+            users.addAll(AppDatabase.database.userDAO().getAllUser());
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
         }
     }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Admin_disease">
+    tools:context=".Information_disease">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -43,35 +43,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/insearchpenyakit" />
 
-        <Button
-            android:id="@+id/btnaddpenyakit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Add disease"
-            app:layout_constraintEnd_toEndOf="@+id/btnsearchpenyakit"
-            app:layout_constraintTop_toBottomOf="@+id/btnsearchpenyakit" />
-
-        <Button
-            android:id="@+id/btnaddgejala"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Add gejala"
-            app:layout_constraintStart_toStartOf="@+id/insearchpenyakit"
-            app:layout_constraintTop_toBottomOf="@+id/btnsearchpenyakit" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvpenyakit"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnaddpenyakit"
+            app:layout_constraintTop_toBottomOf="@+id/insearchpenyakit"
             tools:listitem="@layout/item_disease" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

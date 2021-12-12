@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Obat_detail">
+
+    <TextView
+        android:id="@+id/tvdetailnama_obat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="32dp"
+        android:text="TextView"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvdetailrasa_obat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvdetailnama_obat"
+        app:layout_constraintStart_toStartOf="@+id/tvdetailnama_obat"
+        app:layout_constraintTop_toBottomOf="@+id/tvdetailnama_obat" />
+
+    <TextView
+        android:id="@+id/tvdetailumur_obat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvdetailnama_obat"
+        app:layout_constraintStart_toStartOf="@+id/tvdetailnama_obat"
+        app:layout_constraintTop_toBottomOf="@+id/tvdetailrasa_obat" />
+
+    <TextView
+        android:id="@+id/tvdetailtakaran_obat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvdetailpenyakit_obat"
+        app:layout_constraintStart_toStartOf="@+id/tvdetailpenyakit_obat"
+        app:layout_constraintTop_toBottomOf="@+id/tvdetailpenyakit_obat" />
+
+    <TextView
+        android:id="@+id/tvdetailpenyakit_obat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvdetailumur_obat"
+        app:layout_constraintStart_toStartOf="@+id/tvdetailumur_obat"
+        app:layout_constraintTop_toBottomOf="@+id/tvdetailumur_obat" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

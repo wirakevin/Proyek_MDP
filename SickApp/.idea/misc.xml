@@ -45,13 +45,23 @@
         <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/activity_admin_page.xml" value="0.16818642350557245" />
         <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/activity_change_disease.xml" value="0.22509057971014493" />
         <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/activity_change_obat.xml" value="0.16818642350557245" />
+        <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/activity_disease_detail.xml" value="0.25271739130434784" />
         <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/activity_first_aid_end.xml" value="0.2572463768115942" />
         <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/activity_firstaid.xml" value="0.25" />
+        <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/activity_guest_home.xml" value="0.25271739130434784" />
+        <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/activity_guest_page.xml" value="0.25271739130434784" />
+        <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/activity_information_page.xml" value="0.25271739130434784" />
         <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/activity_main.xml" value="0.16818642350557245" />
+        <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/activity_obat_detail.xml" value="0.25271739130434784" />
+        <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/activity_user_page.xml" value="0.25271739130434784" />
         <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/fragment_admin_disease.xml" value="0.21965579710144928" />
         <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/fragment_admin_obat.xml" value="0.21965579710144928" />
+        <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/fragment_information_disease.xml" value="0.25271739130434784" />
+        <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/fragment_information_obat.xml" value="0.25271739130434784" />
         <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/fragment_login.xml" value="0.16818642350557245" />
         <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/fragment_register.xml" value="0.16818642350557245" />
+        <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/fragment_user_history.xml" value="0.25271739130434784" />
+        <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/fragment_user_home.xml" value="0.25271739130434784" />
         <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/item_disease.xml" value="0.21965579710144928" />
         <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/item_gejala.xml" value="0.21965579710144928" />
         <entry key="..\:/Users/SCP-999/Storage/Documents/GitHub/Proyek_MDP/SickApp/app/src/main/res/layout/item_obat.xml" value="0.25" />

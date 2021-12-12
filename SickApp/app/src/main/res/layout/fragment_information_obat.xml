@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Admin_disease">
+    tools:context=".Information_obat">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,63 +16,55 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
-            android:text="Disease"
+            android:text="Medicine"
             android:textSize="34sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/insearchpenyakit"
+            android:id="@+id/insearchobat"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
             android:ems="10"
-            android:hint="Nama Penyakit"
+            android:hint="Nama Obat"
             android:inputType="textPersonName"
-            app:layout_constraintEnd_toStartOf="@+id/btnsearchpenyakit"
+            app:layout_constraintEnd_toStartOf="@+id/btnsearchobat"
             app:layout_constraintStart_toStartOf="@+id/textView"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-        <Button
-            android:id="@+id/btnsearchpenyakit"
-            android:layout_width="50dp"
+        <Spinner
+            android:id="@+id/spnpenyakit"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/insearchobat"
+            app:layout_constraintStart_toStartOf="@+id/insearchobat"
+            app:layout_constraintTop_toBottomOf="@+id/insearchobat" />
+
+        <Button
+            android:id="@+id/btnsearchobat"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginEnd="32dp"
-            app:icon="@drawable/baseline_search_24"
+            android:text="search"
+            app:layout_constraintBottom_toBottomOf="@+id/spnpenyakit"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/insearchpenyakit" />
-
-        <Button
-            android:id="@+id/btnaddpenyakit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Add disease"
-            app:layout_constraintEnd_toEndOf="@+id/btnsearchpenyakit"
-            app:layout_constraintTop_toBottomOf="@+id/btnsearchpenyakit" />
-
-        <Button
-            android:id="@+id/btnaddgejala"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Add gejala"
-            app:layout_constraintStart_toStartOf="@+id/insearchpenyakit"
-            app:layout_constraintTop_toBottomOf="@+id/btnsearchpenyakit" />
+            app:layout_constraintTop_toTopOf="@+id/insearchobat" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvpenyakit"
+            android:id="@+id/rvobat"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnaddpenyakit"
-            tools:listitem="@layout/item_disease" />
+            app:layout_constraintTop_toBottomOf="@+id/spnpenyakit"
+            tools:listitem="@layout/item_obat" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

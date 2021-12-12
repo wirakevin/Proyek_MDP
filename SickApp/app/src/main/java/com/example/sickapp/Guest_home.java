@@ -29,6 +29,14 @@ public class Guest_home extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        btninformation_guest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Guest_home.this, Information_page.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override
