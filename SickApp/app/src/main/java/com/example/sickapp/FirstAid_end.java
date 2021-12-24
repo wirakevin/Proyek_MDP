@@ -46,8 +46,10 @@ public class FirstAid_end extends AppCompatActivity {
         else{
             tvhasil.setText("Berdasarkan gejala yang dipilih, anda kemungkinan terkena " + mydisease.nama);
 
-            user.history_penyakit += ","+mydisease.nama;
-            new UpdateTask().execute(user);
+            if (user != null){
+                user.history_penyakit += ","+mydisease.nama;
+                new UpdateTask().execute(user);
+            }
         }
 
         rvobat.setLayoutManager(new LinearLayoutManager(FirstAid_end.this));

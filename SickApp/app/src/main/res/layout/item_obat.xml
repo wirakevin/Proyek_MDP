@@ -9,6 +9,8 @@
         android:id="@+id/cardobat"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#2196F3"
         android:longClickable="false"
         app:cardCornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,7 +21,7 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+            android:layout_width="392dp"
             android:layout_height="match_parent"
             android:background="#00FFFFFF">
 
@@ -27,22 +29,30 @@
                 android:id="@+id/ivobat"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
                 tools:srcCompat="@drawable/baseline_medication_20" />
 
             <TextView
                 android:id="@+id/tvnamaobat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="32dp"
+                android:maxLines="5"
                 android:text="TextView"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintBottom_toBottomOf="@+id/ivobat"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.005"
                 app:layout_constraintStart_toEndOf="@+id/ivobat"
                 app:layout_constraintTop_toTopOf="@+id/ivobat" />
 
@@ -50,21 +60,36 @@
                 android:id="@+id/tvumurobat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:maxLines="5"
                 android:text="TextView"
                 android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="@+id/tvnamaobat"
-                app:layout_constraintTop_toBottomOf="@+id/tvnamaobat" />
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/ivobat"
+                app:layout_constraintTop_toBottomOf="@+id/ivobat" />
 
             <TextView
                 android:id="@+id/tvpenyakit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="16dp"
+                android:maxLines="5"
                 android:text="TextView"
                 android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="@+id/tvumurobat"
-                app:layout_constraintTop_toBottomOf="@+id/tvumurobat" />
+                app:autoSizeTextType="uniform"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/ivobat"
+                app:layout_constraintTop_toBottomOf="@+id/tvumurobat"
+                app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -3,6 +3,7 @@ package com.example.sickapp;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -53,6 +54,7 @@ public class ObatAdapter extends RecyclerView.Adapter<ObatAdapter.ListViewHolder
         holder.tvnamaobat.setText(obat.nama);
         holder.tvumurobat.setText("Untuk umur : " + u);
         holder.tvpenyakit.setText("Untuk mengatasi : " + obat.untuk_penyakit);
+        holder.ivobat.setBackgroundResource(R.drawable.baseline_medication_24);
 
         holder.cardobat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,9 +72,11 @@ public class ObatAdapter extends RecyclerView.Adapter<ObatAdapter.ListViewHolder
     public class ListViewHolder extends RecyclerView.ViewHolder {
         TextView tvnamaobat, tvumurobat, tvpenyakit;
         CardView cardobat;
+        ImageView ivobat;
         public ListViewHolder(@NonNull final View itemView) {
             super(itemView);
             cardobat = itemView.findViewById(R.id.cardobat);
+            ivobat = itemView.findViewById(R.id.ivobat);
             tvnamaobat = itemView.findViewById(R.id.tvnamaobat);
             tvumurobat = itemView.findViewById(R.id.tvumurobat);
             tvpenyakit = itemView.findViewById(R.id.tvpenyakit);

@@ -44,6 +44,16 @@ public class FirstAid extends AppCompatActivity {
 
         user = getIntent().getParcelableExtra("user");
 
+        /*if (!user.dob.equals("")){
+            String[] dob = user.dob.split("/");
+
+            int tanggal = Integer.parseInt(dob[0]);
+            int bulan = Integer.parseInt(dob[1]);
+            int tahun = Integer.parseInt(dob[2]);
+
+            Toast.makeText(FirstAid.this, tanggal + "/" + bulan + "/" + tahun, Toast.LENGTH_SHORT).show();
+        }*/
+
         inumur = findViewById(R.id.inumur);
         tvgejalapenyakit = findViewById(R.id.tvgejalapenyakit2);
         ingejalapenyakit = findViewById(R.id.ingejalapenyakit);
@@ -100,6 +110,7 @@ public class FirstAid extends AppCompatActivity {
                     Toast.makeText(FirstAid.this, "Field kosong", Toast.LENGTH_SHORT).show();
                 }
                 else{
+                    //Memasukkan gejala  inputan user ke arraylist daatabase(db)
                     ArrayList<String> db = new ArrayList<>();
                     db.clear();
                     String[] tempdb = mygejala.split(",");
@@ -112,6 +123,7 @@ public class FirstAid extends AppCompatActivity {
                     Disease mydisease = new Disease("", "");
                     int notfound = 0;
 
+                    //memasukkan semua penyakit yang ada ke dalam nextkb
                     nextkb.clear();
                     new GetAllDisease();
                     nextkb.addAll(diseases);
@@ -132,6 +144,8 @@ public class FirstAid extends AppCompatActivity {
                                 nowkbgejala.add(s);
                             }
 
+                            //Jika jumlah gejala inputan user lebih banyak atau sama dengan jumlah gejala penyakit
+                            //Maka akan lanjut ke step selanjutnya
                             if (nowkbgejala.size() <= db.size()){
                                 int nada = 0;
                                 for (String g1: nowkbgejala) {
@@ -142,6 +156,8 @@ public class FirstAid extends AppCompatActivity {
                                     }
                                 }
 
+                                //Jika gejala inputan user ada/sama dengan semua gejala penyakit
+                                //Maka penyakit akan ditambahkan ke database(db)
                                 if (nada >= nowkbgejala.size()){
                                     boolean adadidb = false;
                                     for (String my:db) {
@@ -149,6 +165,8 @@ public class FirstAid extends AppCompatActivity {
                                             adadidb = true;
                                         }
                                     }
+
+                                    //pengecekan jika penyakit sudah ada dalam database(db)
                                     if (!adadidb){
                                         db.add(nowkb.nama);
                                         mydisease = nowkb;
@@ -163,6 +181,8 @@ public class FirstAid extends AppCompatActivity {
                                 nextkb.add(nowkb);
                             }
                         }
+                        //Jika setelah 3x loop tidak ada data baru yang dimasukkan kedalam database(db)
+                        //Loop akan diakhiri dan mengambil hasil terakhir
                         if (notfound > 3){
                             nextkb.clear();
                         }
