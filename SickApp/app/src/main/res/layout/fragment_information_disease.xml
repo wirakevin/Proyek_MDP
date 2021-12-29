@@ -6,56 +6,101 @@
     android:layout_height="match_parent"
     tools:context=".Information_disease">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:weightSum="12">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:text="Disease"
-            android:textSize="34sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            style="@style/parent"
+            android:layout_weight="3"
+            android:background="@drawable/login_shape_bk"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvInformation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                style="@style/headerTextPrimary"
+                android:text="Information"
+                android:textColor="#FFFF"
+                android:textSize="34sp" />
+
+            <ImageView
+                style="@style/parent"
+                android:background="@drawable/ic_login_bk"
+                android:contentDescription="login background" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        style="@style/loginCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginRight="10dp"
+        app:cardCornerRadius="16dp"
+        android:background="@color/whiteCardColor">
 
         <EditText
             android:id="@+id/insearchpenyakit"
-            android:layout_width="0dp"
+            style="@style/modifiedEditText"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:ems="10"
             android:hint="Nama Penyakit"
             android:inputType="textPersonName"
-            app:layout_constraintEnd_toStartOf="@+id/btnsearchpenyakit"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            android:maxLines="1"
+            app:layout_constraintEnd_toStartOf="@+id/btnsearchpenyakit" />
 
         <Button
             android:id="@+id/btnsearchpenyakit"
             android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="#03A9F4"
             app:icon="@drawable/baseline_search_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/insearchpenyakit" />
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        style="@style/loginCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="@dimen/loginViewsMargin"
+        android:background="@color/whiteCardColor"
+        android:elevation="10dp"
+        android:overScrollMode="always"
+        app:cardCornerRadius="@dimen/loginCardRadius">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvpenyakit"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
+            android:layout_width="377dp"
+            android:layout_height="392dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
+            android:overScrollMode="always"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/insearchpenyakit"
-            tools:listitem="@layout/item_disease" />
+            tools:listitem="@layout/item_disease">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.cardview.widget.CardView>
 </FrameLayout>

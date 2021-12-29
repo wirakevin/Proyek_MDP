@@ -103,7 +103,9 @@ public class User_history extends Fragment {
             }
         });
 
-        new GetAllDisease().execute();
+        if (user.history_penyakit != null){
+            new GetAllDisease().execute();
+        }
     }
 
     private class GetAllDisease extends AsyncTask<Void, Void, List<Disease>> {

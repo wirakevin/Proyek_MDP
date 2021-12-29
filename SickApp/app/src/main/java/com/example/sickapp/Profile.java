@@ -82,7 +82,7 @@ public class Profile extends AppCompatActivity {
                 }
 
                 new UpdateTask().execute(user);
-                Intent i = new Intent(Profile.this, Guest_home.class);
+                Intent i = new Intent(Profile.this, User_page.class);
                 i.putExtra("user", user);
                 startActivity(i);
             }

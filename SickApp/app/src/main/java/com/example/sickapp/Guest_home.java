@@ -2,6 +2,7 @@ package com.example.sickapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,17 +13,17 @@ import android.widget.Button;
 
 public class Guest_home extends AppCompatActivity {
 
-    Button btnfirstaid_guest, btninformation_guest;
+    CardView cardfirstaid, cardinformation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_home);
 
-        btnfirstaid_guest = findViewById(R.id.btnfirstaid_guest);
-        btninformation_guest = findViewById(R.id.btninformation_guest);
+        cardfirstaid = findViewById(R.id.cardfirstaid);
+        cardinformation = findViewById(R.id.cardinformation);
 
-        btnfirstaid_guest.setOnClickListener(new View.OnClickListener() {
+        cardfirstaid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Guest_home.this, FirstAid.class);
@@ -30,7 +31,7 @@ public class Guest_home extends AppCompatActivity {
             }
         });
 
-        btninformation_guest.setOnClickListener(new View.OnClickListener() {
+        cardinformation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Guest_home.this, Information_page.class);

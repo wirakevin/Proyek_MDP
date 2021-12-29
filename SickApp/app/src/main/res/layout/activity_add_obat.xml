@@ -1,153 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Add_obat">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:weightSum="12">
 
-    <EditText
-        android:id="@+id/inobatuntukumur2"
-        android:layout_width="0dp"
+        <LinearLayout
+            style="@style/parent"
+            android:layout_weight="3"
+            android:background="@drawable/login_shape_bk"
+            android:orientation="vertical">
+
+            <ImageView
+                style="@style/parent"
+                android:background="@drawable/ic_login_bk"
+                android:contentDescription="login background" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <androidx.cardview.widget.CardView
+        style="@style/loginCard"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_weight="1"
-        android:ems="10"
-        android:hint="Umur"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="@+id/innamaobat"
-        app:layout_constraintStart_toEndOf="@+id/tvantara"
-        app:layout_constraintTop_toTopOf="@+id/tvantara" />
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="@dimen/loginViewsMargin"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="@dimen/loginViewsMargin"
+        android:background="@color/whiteCardColor"
+        android:elevation="10dp"
+        app:cardCornerRadius="@dimen/loginCardRadius">
+        <LinearLayout
+            style="@style/linearParent"
+            android:layout_gravity="center"
+            android:padding="@dimen/loginViewsMargin">
 
-    <EditText
-        android:id="@+id/innamaobat"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:hint="Nama Obat"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:checkedButton="@id/rbumur"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/inrasaobat"
-        app:layout_constraintStart_toStartOf="@+id/innamaobat"
-        app:layout_constraintTop_toBottomOf="@+id/inrasaobat">
+            <EditText
+                android:id="@+id/innamaobat"
+                style="@style/modifiedEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Nama Obat"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <RadioButton
-            android:id="@+id/rbumur"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Sama Dengan" />
+            <RadioGroup
+                android:id="@+id/radioGroup2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:checkedButton="@id/rbumur"
+                android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/rbumur1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Diatas " />
+                <RadioButton
+                    android:id="@+id/rbumur"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="10dp"
+                    android:text="Sama Dengan" />
 
-        <RadioButton
-            android:id="@+id/rbumur2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dibawah " />
+                <RadioButton
+                    android:id="@+id/rbumur1"
+                    android:textSize="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Diatas " />
 
-        <RadioButton
-            android:id="@+id/rbumur3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Diantara " />
-    </RadioGroup>
+                <RadioButton
+                    android:id="@+id/rbumur2"
+                    android:textSize="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dibawah " />
 
-    <EditText
-        android:id="@+id/intakaranobat"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Takaran Obat"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="@+id/innamaobat"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/innamaobat"
-        app:layout_constraintTop_toBottomOf="@+id/inobatuntukumur" />
+                <RadioButton
+                    android:id="@+id/rbumur3"
+                    android:textSize="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Diantara " />
+            </RadioGroup>
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Untuk mengobati : "
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/intakaranobat"
-        app:layout_constraintTop_toBottomOf="@+id/intakaranobat" />
 
-    <Spinner
-        android:id="@+id/spnobatpenyakit"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/intakaranobat"
-        app:layout_constraintStart_toStartOf="@+id/intakaranobat"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/inobatuntukumur"
+                    style="@style/modifiedEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Umur"
+                    android:inputType="number" />
+                <TextView
+                    android:id="@+id/tvantara"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
 
-    <Button
-        android:id="@+id/btnaddnewobat"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="add new obat"
-        app:layout_constraintEnd_toEndOf="@+id/spnobatpenyakit"
-        app:layout_constraintStart_toStartOf="@+id/spnobatpenyakit"
-        app:layout_constraintTop_toBottomOf="@+id/spnobatpenyakit" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/inobatuntukumur" />
+                <EditText
+                    android:id="@+id/inobatuntukumur2"
+                    style="@style/modifiedEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Umur"
+                    android:inputType="number" />
 
-    <EditText
-        android:id="@+id/inrasaobat"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_weight="1"
-        android:ems="10"
-        android:hint="Rasa Obat"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/innamaobat"
-        app:layout_constraintStart_toStartOf="@+id/innamaobat"
-        app:layout_constraintTop_toBottomOf="@+id/innamaobat" />
 
-    <EditText
-        android:id="@+id/inobatuntukumur"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_weight="1"
-        android:ems="10"
-        android:hint="Umur"
-        android:inputType="number"
-        app:layout_constraintEnd_toStartOf="@+id/tvantara"
-        app:layout_constraintStart_toStartOf="@+id/innamaobat"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
 
-    <TextView
-        android:id="@+id/tvantara"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="-"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/inobatuntukumur" />
+            </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <EditText
+                android:id="@+id/intakaranobat"
+                android:layout_width="match_parent"
+                style="@style/modifiedEditText"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Takaran Obat"
+                android:inputType="textMultiLine" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Untuk mengobati : "
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/intakaranobat"
+                app:layout_constraintTop_toBottomOf="@+id/intakaranobat" />
+
+            <Spinner
+                android:id="@+id/spnobatpenyakit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/intakaranobat"
+                app:layout_constraintStart_toStartOf="@+id/intakaranobat"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            <EditText
+                android:id="@+id/inrasaobat"
+                style="@style/modifiedEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Rasa Obat"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="@+id/innamaobat"
+                app:layout_constraintStart_toStartOf="@+id/innamaobat"
+                app:layout_constraintTop_toBottomOf="@+id/innamaobat" />
+            <Button
+                android:id="@+id/btnaddnewobat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="add new obat"
+                android:backgroundTint="#03A9F4"
+                app:cornerRadius = "12dp"
+                app:layout_constraintEnd_toEndOf="@+id/spnobatpenyakit"
+                app:layout_constraintStart_toStartOf="@+id/spnobatpenyakit"
+                app:layout_constraintTop_toBottomOf="@+id/spnobatpenyakit" />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

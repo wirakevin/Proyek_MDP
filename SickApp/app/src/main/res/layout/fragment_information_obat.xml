@@ -5,67 +5,108 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Information_obat">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:weightSum="12">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:text="Medicine"
-            android:textSize="34sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            style="@style/parent"
+            android:layout_weight="3"
+            android:background="@drawable/login_shape_bk"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvInformation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="30dp"
+                style="@style/headerTextPrimary"
+                android:text="Medicine"
+                android:textColor="#FFFF"
+                android:textSize="34sp" />
+
+            <ImageView
+                style="@style/parent"
+                android:background="@drawable/ic_login_bk"
+                android:contentDescription="login background" />
+        </LinearLayout>
+    </LinearLayout>
+    <RelativeLayout
+        style="@style/loginCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginRight="10dp"
+        app:cardCornerRadius="16dp"
+        android:background="@color/whiteCardColor">
 
         <EditText
             android:id="@+id/insearchobat"
-            android:layout_width="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            style="@style/modifiedEditText"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
             android:ems="10"
             android:hint="Nama Obat"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toStartOf="@+id/btnsearchobat"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-        <Spinner
-            android:id="@+id/spnpenyakit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/insearchobat"
-            app:layout_constraintStart_toStartOf="@+id/insearchobat"
-            app:layout_constraintTop_toBottomOf="@+id/insearchobat" />
-
+            android:inputType="textPersonName" />
         <Button
             android:id="@+id/btnsearchobat"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginEnd="32dp"
-            android:text="search"
-            app:layout_constraintBottom_toBottomOf="@+id/spnpenyakit"
+            android:layout_width="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="#03A9F4"
+            android:layout_height="50dp"
+            app:icon="@drawable/baseline_search_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/insearchobat" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:text="Daftar Penyakit"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+        <Spinner
+            android:id="@+id/spnpenyakit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+       <androidx.cardview.widget.CardView
+           style="@style/loginCard"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:layout_marginLeft="10dp"
+           android:layout_marginTop="170dp"
+           android:layout_marginRight="10dp"
+           android:layout_marginBottom="@dimen/loginViewsMargin"
+           android:background="@color/whiteCardColor"
+           android:elevation="10dp"
+           android:overScrollMode="always"
+           app:cardCornerRadius="@dimen/loginCardRadius">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvobat"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spnpenyakit"
-            tools:listitem="@layout/item_obat" />
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/rvobat"
+               android:layout_width="match_parent"
+               android:layout_height="296dp"
+               tools:listitem="@layout/item_obat" />
+       </androidx.cardview.widget.CardView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </FrameLayout>

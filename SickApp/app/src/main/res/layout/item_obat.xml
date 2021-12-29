@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,92 +7,69 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardobat"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#2196F3"
-        android:longClickable="false"
-        app:cardCornerRadius="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview_background"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                app:cardBackgroundColor="#40d7cb"
+                app:cardCornerRadius="16dp">
+                <ImageView
+                    android:id="@+id/ivobat"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    tools:srcCompat="@drawable/baseline_medication_20" />
+            </androidx.cardview.widget.CardView>
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="392dp"
-            android:layout_height="match_parent"
-            android:background="#00FFFFFF">
-
-            <ImageView
-                android:id="@+id/ivobat"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                tools:srcCompat="@drawable/baseline_medication_20" />
-
-            <TextView
-                android:id="@+id/tvnamaobat"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="32dp"
-                android:maxLines="5"
-                android:text="TextView"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:autoSizeTextType="uniform"
-                app:layout_constraintBottom_toBottomOf="@+id/ivobat"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.005"
-                app:layout_constraintStart_toEndOf="@+id/ivobat"
-                app:layout_constraintTop_toTopOf="@+id/ivobat" />
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@id/cardview_background"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvnamaobat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="5"
+                    android:text="TextView"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:autoSizeTextType="uniform"/>
 
-            <TextView
-                android:id="@+id/tvumurobat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
-                android:maxLines="5"
-                android:text="TextView"
-                android:textColor="@color/black"
-                app:autoSizeTextType="uniform"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/ivobat"
-                app:layout_constraintTop_toBottomOf="@+id/ivobat" />
+                <TextView
+                    android:id="@+id/tvumurobat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="5"
+                    android:text="TextView"
+                    android:textColor="@color/black"
+                    app:autoSizeTextType="uniform"/>
 
-            <TextView
-                android:id="@+id/tvpenyakit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginBottom="16dp"
-                android:maxLines="5"
-                android:text="TextView"
-                android:textColor="@color/black"
-                app:autoSizeTextType="uniform"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/ivobat"
-                app:layout_constraintTop_toBottomOf="@+id/tvumurobat"
-                app:layout_constraintVertical_bias="1.0" />
+                <TextView
+                    android:id="@+id/tvpenyakit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="5"
+                    android:text="TextView"
+                    android:textColor="@color/black"
+                    app:autoSizeTextType="uniform"/>
+            </LinearLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

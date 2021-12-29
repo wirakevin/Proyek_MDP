@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ public class User_page extends AppCompatActivity implements BottomNavigationView
 
     BottomNavigationView bnuser;
     User user;
+    private UserSettings settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +25,7 @@ public class User_page extends AppCompatActivity implements BottomNavigationView
         setContentView(R.layout.activity_user_page);
 
         user = getIntent().getParcelableExtra("user");
-
+        settings = (UserSettings) getApplication();
         bnuser = findViewById(R.id.bnuser);
         bnuser.setOnNavigationItemSelectedListener(User_page.this);
 
@@ -44,6 +46,14 @@ public class User_page extends AppCompatActivity implements BottomNavigationView
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.menuLogout) {
+            settings.setUsername("");
+            settings.setPassword("");
+
+            SharedPreferences.Editor editor = getSharedPreferences(UserSettings.PREFERENCES, MODE_PRIVATE).edit();
+            editor.putString(UserSettings.USERNAME, settings.getUsername());
+            editor.putString(UserSettings.PASSWORD, settings.getPassword());
+            editor.apply();
+
             Intent i = new Intent(User_page.this,MainActivity.class);
             startActivity(i);
         }

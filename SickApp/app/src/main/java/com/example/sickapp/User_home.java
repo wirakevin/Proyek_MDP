@@ -5,12 +5,15 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,7 +23,9 @@ import android.widget.Button;
 public class User_home extends Fragment {
 
     User user;
-    Button btnfirstaid, btninformation;
+    CardView cardaid, cardinfo;
+    TextView tvnamauser;
+    RelativeLayout header;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -73,15 +78,32 @@ public class User_home extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        btnfirstaid = view.findViewById(R.id.btnfirstaid);
-        btninformation = view.findViewById(R.id.btninformation);
+        cardaid = view.findViewById(R.id.cardaid);
+        cardinfo = view.findViewById(R.id.cardinfo);
+        tvnamauser = view.findViewById(R.id.tvnamauser);
+        header = view.findViewById(R.id.rlheaderuser);
 
         Bundle b = getArguments();
         if(b!= null) {
             user = b.getParcelable("user");
+            if (user.nama != null){
+                tvnamauser.setText("Hi " + user.nama + "!");
+            }
+            else{
+                tvnamauser.setText("Hi!");
+            }
         }
 
-        btnfirstaid.setOnClickListener(new View.OnClickListener() {
+        header.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), Profile.class);
+                i.putExtra("user", user);
+                startActivity(i);
+            }
+        });
+
+        cardaid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(), FirstAid.class);
@@ -90,7 +112,7 @@ public class User_home extends Fragment {
             }
         });
 
-        btninformation.setOnClickListener(new View.OnClickListener() {
+        cardinfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(), Information_page.class);

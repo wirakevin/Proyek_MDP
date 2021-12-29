@@ -1,67 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Add_gejala">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:weightSum="12">
 
-    <Button
-        android:id="@+id/btncarigejala"
-        android:layout_width="50dp"
+        <LinearLayout
+            style="@style/parent"
+            android:layout_weight="3"
+            android:background="@drawable/login_shape_bk"
+            android:orientation="vertical">
+
+            <ImageView
+                style="@style/parent"
+                android:background="@drawable/ic_login_bk"
+                android:contentDescription="login background" />
+
+        </LinearLayout>
+    </LinearLayout>
+    <androidx.cardview.widget.CardView
+        style="@style/loginCard"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:icon="@drawable/baseline_search_24"
-        app:layout_constraintEnd_toEndOf="@+id/innamagejala"
-        app:layout_constraintTop_toTopOf="@+id/incarigejala" />
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="@dimen/loginViewsMargin"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="@dimen/loginViewsMargin"
+        android:background="@color/whiteCardColor"
+        android:elevation="10dp"
+        app:cardCornerRadius="@dimen/loginCardRadius">
+        <LinearLayout
+            style="@style/linearParent"
+            android:layout_gravity="center"
+            android:padding="@dimen/loginViewsMargin">
+            <RelativeLayout
+                style="@style/loginCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/whiteCardColor"
+                app:cardCornerRadius="16dp">
 
-    <EditText
-        android:id="@+id/incarigejala"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="Cari Gejala"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/btncarigejala"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnaddnewgejala" />
+                <EditText
+                    android:id="@+id/incarigejala"
+                    style="@style/modifiedEditText"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Cari Gejala"
+                    android:inputType="textPersonName" />
+                <Button
+                    android:id="@+id/btncarigejala"
+                    android:backgroundTint="#03A9F4"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    app:icon="@drawable/baseline_search_24"/>
+            </RelativeLayout>
 
-    <EditText
-        android:id="@+id/innamagejala"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:hint="Nama Gejala Baru"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnaddnewgejala"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="add new gejala"
-        app:layout_constraintEnd_toEndOf="@+id/innamagejala"
-        app:layout_constraintStart_toStartOf="@+id/innamagejala"
-        app:layout_constraintTop_toBottomOf="@+id/innamagejala" />
+            <EditText
+                android:id="@+id/innamagejala"
+                style="@style/modifiedEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="Nama Gejala Baru"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:id="@+id/listgejala"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/innamagejala"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/innamagejala"
-        app:layout_constraintTop_toBottomOf="@+id/incarigejala"
-        app:layout_constraintVertical_bias="0.0" />
+            <Button
+                android:id="@+id/btnaddnewgejala"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#03A9F4"
+                app:rippleColor="#FFEB3B"
+                android:text="add new gejala"
+                app:cornerRadius="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/innamagejala"
+                app:layout_constraintStart_toStartOf="@+id/innamagejala"
+                app:layout_constraintTop_toBottomOf="@+id/innamagejala" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <ListView
+                android:id="@+id/listgejala"
+                android:layout_width="match_parent"
+                android:overScrollMode="always"
+                android:layout_height="458dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/innamagejala"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/innamagejala"
+                app:layout_constraintTop_toBottomOf="@+id/incarigejala"
+                app:layout_constraintVertical_bias="0.0" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</FrameLayout>

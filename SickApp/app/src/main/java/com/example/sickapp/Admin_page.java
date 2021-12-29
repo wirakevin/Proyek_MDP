@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,6 +27,7 @@ public class Admin_page extends AppCompatActivity implements BottomNavigationVie
     ArrayList<Disease> diseases = new ArrayList<>();
     ArrayList<Obat> obats = new ArrayList<>();
     BottomNavigationView bnadmin;
+    private UserSettings settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,12 @@ public class Admin_page extends AppCompatActivity implements BottomNavigationVie
         new GetAllObat().execute();
 
         bnadmin.setOnNavigationItemSelectedListener(Admin_page.this);
+        settings = (UserSettings) getApplication();
+
+        SharedPreferences.Editor editor = getSharedPreferences(UserSettings.PREFERENCES, MODE_PRIVATE).edit();
+        editor.putString(UserSettings.USERNAME, "admin");
+        editor.putString(UserSettings.PASSWORD, "admin");
+        editor.apply();
     }
 
     @Override
@@ -50,6 +58,14 @@ public class Admin_page extends AppCompatActivity implements BottomNavigationVie
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.menuLogout) {
+            settings.setUsername("");
+            settings.setPassword("");
+
+            SharedPreferences.Editor editor = getSharedPreferences(UserSettings.PREFERENCES, MODE_PRIVATE).edit();
+            editor.putString(UserSettings.USERNAME, settings.getUsername());
+            editor.putString(UserSettings.PASSWORD, settings.getPassword());
+            editor.apply();
+
             Intent i = new Intent(Admin_page.this,MainActivity.class);
             startActivity(i);
         }
