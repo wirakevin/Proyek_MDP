@@ -37,6 +37,9 @@ public class User implements Parcelable {
     @ColumnInfo(name="history_penyakit")
     String history_penyakit;
 
+    @ColumnInfo(name="myimage")
+    String myimage;
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
@@ -52,6 +55,7 @@ public class User implements Parcelable {
         no_tlp = in.readString();
         gender = in.readString();
         history_penyakit = in.readString();
+        myimage = in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -82,5 +86,6 @@ public class User implements Parcelable {
         parcel.writeString(no_tlp);
         parcel.writeString(gender);
         parcel.writeString(history_penyakit);
+        parcel.writeString(myimage);
     }
 }

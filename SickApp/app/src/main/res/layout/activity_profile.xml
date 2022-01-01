@@ -42,16 +42,11 @@
             android:layout_gravity="center"
             android:padding="@dimen/loginViewsMargin">
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="118dp"
-                android:layout_height="103dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="50dp"
-                android:background="@drawable/ic_baseline_account_circle_24"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/myimg"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:srcCompat="@drawable/ic_baseline_account_circle_24" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -152,6 +147,12 @@
                         android:text="Wanita"
                         android:textSize="12sp" />
                 </RadioGroup>
+
+                <Button
+                    android:id="@+id/btnselectimg"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="select image" />
 
                 <Button
                     android:id="@+id/btnsubmit"

@@ -23,8 +23,8 @@
             android:text="Hi Thomas!"
             android:textSize="21sp" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_user"
+        <ImageView
+            android:id="@+id/myimghome"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentRight="true"

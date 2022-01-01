@@ -1,14 +1,18 @@
 package com.example.sickapp;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -18,7 +22,8 @@ public class Profile extends AppCompatActivity {
     User user;
     EditText profilenama, profiledob, profilealamat, profileno_tlp;
     RadioButton rb1, rb2;
-    Button btnsubmit;
+    Button btnsubmit, btnselectimg;
+    ImageView myimg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +38,8 @@ public class Profile extends AppCompatActivity {
         rb1 = findViewById(R.id.rb1);
         rb2 = findViewById(R.id.rb2);
         btnsubmit = findViewById(R.id.btnsubmit);
+        btnselectimg = findViewById(R.id.btnselectimg);
+        myimg = findViewById(R.id.myimg);
 
         profilenama.setText("");
         profiledob.setText("");
@@ -56,7 +63,9 @@ public class Profile extends AppCompatActivity {
         if (user.gender != null && user.gender.equals("Wanita")){
             rb2.setChecked(true);
         }
-
+        if (user.myimage != null){
+            myimg.setImageURI(Uri.parse(user.myimage));
+        }
 
         btnsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +94,16 @@ public class Profile extends AppCompatActivity {
                 Intent i = new Intent(Profile.this, User_page.class);
                 i.putExtra("user", user);
                 startActivity(i);
+            }
+        });
+
+        btnselectimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Pick an image"), 123);
             }
         });
     }
@@ -116,6 +135,16 @@ public class Profile extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 123 && resultCode == RESULT_OK && data != null){
+            Uri imageData = data.getData();
+            user.myimage = imageData.toString();
+            myimg.setImageURI(imageData);
         }
     }
 }

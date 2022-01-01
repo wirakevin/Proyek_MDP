@@ -1,6 +1,7 @@
 package com.example.sickapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -26,6 +28,7 @@ public class User_home extends Fragment {
     CardView cardaid, cardinfo;
     TextView tvnamauser;
     RelativeLayout header;
+    ImageView myimage;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -82,6 +85,7 @@ public class User_home extends Fragment {
         cardinfo = view.findViewById(R.id.cardinfo);
         tvnamauser = view.findViewById(R.id.tvnamauser);
         header = view.findViewById(R.id.rlheaderuser);
+        myimage = view.findViewById(R.id.myimghome);
 
         Bundle b = getArguments();
         if(b!= null) {
@@ -91,6 +95,10 @@ public class User_home extends Fragment {
             }
             else{
                 tvnamauser.setText("Hi!");
+            }
+
+            if (user.myimage != null){
+                myimage.setImageURI(Uri.parse(user.myimage));
             }
         }
 
