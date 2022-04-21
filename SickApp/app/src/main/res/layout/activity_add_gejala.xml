@@ -55,14 +55,15 @@
                     android:ems="10"
                     android:hint="Cari Gejala"
                     android:inputType="textPersonName" />
+
                 <Button
                     android:id="@+id/btncarigejala"
-                    android:backgroundTint="#03A9F4"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerInParent="true"
-                    app:icon="@drawable/baseline_search_24"/>
+                    android:backgroundTint="#03A9F4"
+                    app:icon="@drawable/baseline_search_24" />
             </RelativeLayout>
 
 
